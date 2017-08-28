@@ -130,6 +130,13 @@ Sprite.prototype = {
         );
         game.ctx.globalAlpha = 1;
     },
+    drawAtop: function(p, color) {
+        game.ctx.save();
+        game.ctx.globalCompositeOperation = "source-atop";
+        game.ctx.fillStyle = color;
+        game.ctx.fillRect(p.x, p.y, this.width, this.height);
+        game.ctx.restore();
+    },
     animate: function(cycle) {
         if (this.width == this.image.width)
             return;

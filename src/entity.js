@@ -892,10 +892,6 @@ Entity.prototype = {
 
         this.drawSprite();
 
-        if (this.Creator && this.almostBroken()) {
-            this.drawBox("red");
-        }
-
         if (game.debug.entity.box) {
             this.drawBox();
             this.drawCenter();
@@ -1055,7 +1051,11 @@ Entity.prototype = {
         }
     },
     drawHovered: function() {
-        this.sprite.drawOutline(this.getDrawPoint());
+        if (this.Creator && this.almostBroken()) {
+            this.sprite.drawAtop(this.getDrawPoint(), "rgba(230, 10, 10, 0.4)");
+        } else {
+            this.sprite.drawOutline(this.getDrawPoint());
+        }
         var p = this.screen();
         var x = p.x - game.ctx.measureText(this.title).width / 2;
         var y = p.y - this.getDrawDy() - FONT_SIZE * 0.75;
