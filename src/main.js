@@ -17,16 +17,20 @@ function main() {
         if (window.name.indexOf("fXD") == 0) {
             return "ru";
         }
-        const langs = config.ui.language();
-        const lang = langs.find(lang => {
-            const re = new RegExp(lang, "i");
-            return [
-                args["lang"],
-                gameStorage.getItem("lang"),
-                navigator.language,
-            ].some(input => re.test(input));
-        });
-        return lang || langs[0];
+        const inputs = [
+            args["lang"],
+            gameStorage.getItem("lang"),
+            navigator.language,
+        ];
+        const langs = config.ui.language().map(lang => new RegExp(lang, "i"));
+        for (const input of inputs) {
+            for (const re of langs) {
+                if (re.test(input)) {
+                    return re.source;
+                }
+            }
+        }
+        return langs[0];
     }
 
     function parseArgs() {
