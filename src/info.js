@@ -175,7 +175,7 @@ function Info(message, character) {
         game.controller.trade.update(this.data);
         return;
     case ".achievement-unlocked":
-        Achievements.showUnlockTooltip(this.data);
+        Achievements.showUnlockAlert(this.data);
         return;
     }
     this.value = util.toFixed(this.value, (this.value < 1) ? 2 : 0);

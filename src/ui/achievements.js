@@ -50,7 +50,7 @@ class Achievements {
         return new Date(timestamp * 1000).toLocaleDateString();
     }
 
-    static showUnlockTooltip(name) {
+    static showUnlockAlert(name) {
         const img = new Image();
         const {name: title, desc} = Achievements.descriptions[name];
         const container = dom.wrap("achievement-alert achievement achievement-unlocked", [
@@ -66,7 +66,7 @@ class Achievements {
             }
         });
         img.onload = () => {
-            dom.insert(container, game.world);
+            dom.insert(container, document.getElementById("achievement-alerts"));
             setTimeout(() => dom.fadeOut(container), 5000);
         };
         img.onerror = (err) => {
