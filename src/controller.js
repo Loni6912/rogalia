@@ -11,7 +11,7 @@ function Controller(game) {
     this.actionQueue = [];
     this.avatar = null;
     this.xpBar = new ParamBar("XP");
-    this.effects = new Effects();
+    this.effects = null;
     this.quickBars = {
         ctrl: null,
         alt: null,
@@ -388,13 +388,19 @@ function Controller(game) {
         containers.forEach(cnt => cnt.panel.hide());
     };
 
-    this.initPlayerAvatar = function(player) {
-        if (this.avatar) {
-            return;
+    this.updateAvatar = function(player) {
+        if (!this.avatar) {
+            this.initAvatar(player);
         }
+        this.avatar.updateAvatar();
+    };
+
+    this.initAvatar = function(player) {
         this.avatar = new Avatar(player);
+        this.effects = new Effects(this.avatar);
         dom.setContents(document.getElementById("player-avatar"), this.avatar.element);
     };
+
 
     this.wasd = function(x, y, up) {
         // if (game.player.Settings.Pathfinding)

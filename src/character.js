@@ -8,7 +8,7 @@ class Character {
         this.x = 0;
         this.y = 0;
 
-        this.Hp = null;
+        this.Hp = {Current: 0, Max: 0};
         this.Invisible = false;
 
         this.Title = "";
@@ -238,7 +238,7 @@ class Character {
             }
 
             if (data.Style) {
-                game.controller.initPlayerAvatar(this);
+                game.controller.updateAvatar(this);
             }
 
             if ("Party" in data) {

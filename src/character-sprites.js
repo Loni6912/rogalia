@@ -230,6 +230,7 @@ Character.spritesInfo = {
     "prince-of-darkness": {
         width: 150,
         height: 150,
+        offset: 21,
         nameOffset: 110,
         speed: 50000,
         animations: {

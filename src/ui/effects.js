@@ -3,8 +3,9 @@
 "use strict";
 
 class Effects {
-    constructor() {
+    constructor(avatar) {
         this.effects = {};
+        this.avatar = avatar;
     }
 
     remove(name) {
@@ -45,7 +46,7 @@ class Effects {
         if (!effect) {
             effect = new Effect(name, data);
             this.effects[name] = effect;
-            game.controller.avatar.effects.appendChild(effect.element);
+            this.avatar.effects.appendChild(effect.element);
         }
         effect.update(data);
     }

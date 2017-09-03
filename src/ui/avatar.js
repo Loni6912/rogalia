@@ -10,8 +10,7 @@ class Avatar {
             chevron: null,
         };
 
-        this.avatar = character.avatar();
-        this.avatar.classList.add("avatar-image");
+        this.avatar = this.makeAvatar(character);
 
         this.effects = dom.wrap("avatar-effects");
         const params = (character.isPlayer) ? ["Hp", "Fullness", "Stamina"] : ["Hp"];
@@ -35,6 +34,12 @@ class Avatar {
 
     setIcon(name) {
         this.icon.textContent = name;
+    }
+
+    makeAvatar(character = this.character) {
+        const avatar = character.avatar();
+        avatar.classList.add("avatar-image");
+        return avatar;
     }
 
     makeName(character = this.character) {
@@ -78,6 +83,10 @@ class Avatar {
         if (this._state.lvl != character.Lvl || this._state.chevron != character.chevron()) {
             this.name = dom.replace(this.name, this.makeName());
         }
+    }
+
+    updateAvatar() {
+        this.avatar = dom.replace(this.avatar, this.makeAvatar());
     }
 
     onmousedown(e) {

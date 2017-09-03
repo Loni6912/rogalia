@@ -14,6 +14,7 @@ class QuickBar {
                 dwim() {
                     slot.clear();
                 },
+                getTopExcept: () => null,
             }, i);
             slot.element.check = () => true;
             slot.element.use = (entity) => {

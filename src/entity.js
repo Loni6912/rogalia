@@ -277,11 +277,10 @@ Entity.prototype = {
         return armor;
     },
     damage: function() {
-        var damage = util.toFixed(this.Damage * (Math.pow(this.Quality, 1.5) / 5000 + 1), 0);
-        if (this.nonEffective())
-            return util.toFixed(game.player.Skills.Swordsmanship.Value.Current) + " / " + damage;
-
-        return damage;
+        const damage = util.toFixed(this.Damage * (Math.pow(this.Quality, 1.5) / 3333 + 1), 0);
+        return (this.nonEffective())
+            ? util.toFixed(game.player.Skills.Swordsmanship.Value.Current) + " / " + damage
+            : damage;
     },
     makeDescription: function() {
         var text = T.items[this.Type] || T.items[this.Group] || T("No description yet");
