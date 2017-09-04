@@ -248,25 +248,25 @@ function Controller(game) {
         inProgress: false,
         element: document.getElementById("main-action-button"),
         help: dom.wrap("action-help", T("Space")),
-        active: function() {
+        active() {
             return this.handler && this.icon;
         },
-        activate: function() {
+        activate() {
             this.handler();
         },
-        startProgress: function() {
+        startProgress() {
             if (!this.inProgress && this.active()) {
                 this.inProgress = true;
                 this.element.classList.add("active");
             }
         },
-        stopProgress: function() {
+        stopProgress() {
             if (this.inProgress && this.active()) {
                 this.inProgress = false;
                 this.element.classList.remove("active");
             }
         },
-        setAction: function(action, handler) {
+        setAction(action, handler) {
             if (action == this.action) {
                 return;
             }
@@ -276,7 +276,7 @@ function Controller(game) {
             this.element.onclick = handler;
             this.loadIcon(action);
         },
-        reset: function() {
+        reset() {
             this.action = null;
             this.handler = null;
             this.element.onclick = null;
@@ -284,7 +284,7 @@ function Controller(game) {
             this.icon = null;
             this.inProgress = false;
         },
-        loadIcon: function(action) {
+        loadIcon(action) {
             this.icon = loader.loadImage("icons/tools/" + action + ".png");
             dom.setContents(this.element, [
                 this.icon,
@@ -875,7 +875,7 @@ function Controller(game) {
         const ghost = new Entity(entity.Type);
         ghost.initSprite();
         ghost.Id =  entity.Id;
-        while (ghost.Orientation != entity.Orientation) {
+        while (ghost.Orientation && ghost.Orientation != entity.Orientation) {
             ghost.rotate(+1);
         }
         game.controller.creatingCursor(ghost, command, callback, cancel);
