@@ -1606,6 +1606,8 @@ T.dict = {
     "Ok": "Ок",
     "Cancel": "Отмена",
     "No lots": "Нет лотов",
+    "Arena flag": "Арена флаг",
+    "Dungeon": "Подземелье",
     "Domination": "Доминирование",
     "Kitties den": "Кошачье логово",
     "Kitties cave": "Кошачье пещера",
@@ -1950,4 +1952,5 @@ T.dict = {
     "Enable GPU rendering": "Включить GPU",
     "Leaf forest stick": "Лиственная палочка" ,
     "Pine forest stick": "Хвойная палочка",
+    "Type": "Тип",
 };

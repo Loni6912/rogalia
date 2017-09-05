@@ -3813,13 +3813,28 @@ input[type=number], .lot-quantity > input, .price > input {
 }
 
 #instances {
-    min-width: 300px;
+    td {
+        white-space: nowrap;
+    }
+
+    td:nth-child(3) {
+        text-align: center;
+    }
+
+    td:nth-child(4) {
+        text-align: right
+    }
+
+    button {
+        width: 100%;
+    }
 }
 
 #auction .lot:hover {
     .cursor-pointer;
     background-color: #99682e;
 }
+
 #auction {
     min-width: 250px;
 

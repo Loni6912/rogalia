@@ -258,17 +258,25 @@ Character.npcActions = {
                 return;
             }
 
+            const byType = (a, b) => {
+                if (a.Type == b.Type) {
+                    return a.MinLvl - b.MinLvl;
+                }
+                return a.Type.localeCompare(b.Type);
+            };
             var instances = dom.table(
-                [T("Name"), T("Min"), T("Max"), T("Cost"), ""],
-                data.Instances.map(function(instance) {
+                [T("Name"), T("Type"), T("Lvl"), T("Cost"), ""],
+                data.Instances.sort(byType).map(instance => {
                     var enter = dom.button(T("Enter"));
                     enter.onclick = function() {
                         game.network.send("instance", {Id: self.Id, Name: instance.Name}, () => panel.close());
                     };
                     return [
                         TS(instance.Name),
-                        instance.MinLvl,
-                        instance.MaxLvl,
+                        TS(instance.Type || "dungeon"),
+                        (instance.MaxLvl)
+                            ? `${instance.MinLvl} - ${instance.MaxLvl}`
+                            : `${instance.MinLvl}+`,
                         Vendor.createPrice(instance.Cost),
                         enter,
                     ];
