@@ -11,7 +11,7 @@
 }
 
 .font-default() {
-    font:  13px/18px Meiryo, Dejavu Sans, Sans;
+    font:  13px/18px @default-font;
 }
 
 .allow-user-select() {
@@ -34,6 +34,8 @@
 
 @quest-header-color: #8a9aa7;
 @quest-text-color: #d4d8db;
+
+@default-font: Meiryo, Dejavu Sans, Sans-serif;
 
 
 .bg-transparent() {
@@ -880,11 +882,16 @@ hr {
 #warning, #messages, #announcement {
     position: relative;
     top: 7em;
-    text-align: center;
+    text-align: left;
     display: none;
     color: @text-color;
     pointer-events: none;
     z-index: 2000;
+    white-space: pre;
+}
+
+#announcement {
+    text-align: center;
 }
 
 #warning, .info-message {
@@ -2398,6 +2405,7 @@ ol li a:hover {
 
 .message.channel-system .body, .message.channel-server .body {
     color: #ccc;
+    white-space: pre;
 }
 
 #world-icons, #bg-state {
@@ -4126,7 +4134,7 @@ input[type=number], .lot-quantity > input, .price > input {
 
     .products {
 	height: 436px;
-	font: 12px/22px Meiryo, Dejavu Sans, Sans-serif;
+	font: 12px/22px @default-font;
     }
 
     .product-tag {

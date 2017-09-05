@@ -1948,4 +1948,6 @@ T.dict = {
     "Some graphic cards may fail with accelerated rendering. Disable to fix it.": "Некоторые видеокарты не работаю с ускорением. Отключите ускорение, чтобы исправить это.",
     "Disable GPU rendering": "Выключить GPU",
     "Enable GPU rendering": "Включить GPU",
+    "Leaf forest stick": "Лиственная палочка" ,
+    "Pine forest stick": "Хвойная палочка",
 };

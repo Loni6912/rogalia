@@ -1,4 +1,4 @@
-/* global Point, dom, config, util, T, TS, Container, Avatar, Effects, loader, ParamBar, Panel, CELL_SIZE, Character, gameStorage, playerStorage, ProgressBar */
+/* global Point, dom, config, util, T, TS, Container, Avatar, Effects, loader, ParamBar, Panel, CELL_SIZE, Character, gameStorage, playerStorage, ProgressBar, TT, TT */
 
 "use strict";
 

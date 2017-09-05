@@ -64,9 +64,9 @@ function Help() {
         iframe.nwdisable = true;
         iframe.nwfaketop = true;
         iframe.src = {
-            en: "http://rogalia.wikia.com/wiki/Tips_for_new_Players",
+            en: "http://wiki.rogalia.ru/Заглавная_страница/en",
             ja: "http://wikiwiki.jp/rogalia/",
-        }[game.lang] || "http://rogalia.ru/wiki/";
+        }[game.lang] || "http://wiki.rogalia.ru/";
         dom.setContents(contents, iframe);
     }
 

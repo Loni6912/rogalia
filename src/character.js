@@ -1015,6 +1015,15 @@ class Character {
             }
         }
 
+        const w = 64;
+        if (this.Action.Name == "shot") {
+            Character.shootingFlag.draw(new Point(
+                p.x + w/2 + 6,
+                y - Character.shootingFlag.height/4 + dy/3
+            ));
+        }
+
+
         if (!drawHp && !drawName) {
             return;
         }
@@ -1023,7 +1032,6 @@ class Character {
         var x = p.x - nameWidth / 2;
 
         if (drawHp) {
-            var w = 64;
             game.ctx.fillStyle = "#333";
             game.ctx.fillRect(p.x - w/2 - 1, y - 1, w + 2, dy + 2); //wtf
 
@@ -1432,7 +1440,7 @@ class Character {
         }
 
         if (action) {
-            button.setAction(action, makeHandler(cmd, entity));
+            button.setAction(action, () => setCursor(action, entity));
         } else {
             button.reset();
         }
@@ -1472,10 +1480,6 @@ class Character {
                 "pickaxe": ["pickaxe", "dig"],
             }[entity.Group];
             return action && action.concat(entity);
-        }
-
-        function makeHandler(action, entity) {
-            return () => setCursor(action, entity);
         }
 
         function setCursor(action, entity, callback) {

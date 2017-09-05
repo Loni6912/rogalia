@@ -36,6 +36,7 @@ Character.initSprites = function() {
     Character.flags.red = new Sprite("icons/flags/red.png");
     Character.flags.blue = new Sprite("icons/flags/blue.png");
     Character.pvpFlag = new Sprite("icons/pvp.png");
+    Character.shootingFlag = new Sprite("icons/shooting.png");
 };
 
 Character.spritesInfo = {
