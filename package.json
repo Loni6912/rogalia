@@ -8,7 +8,8 @@
     "start": "node scripts/server.js",
     "build": "npm run load-metadata && npm run compile",
     "compile": "gulp",
-    "load-metadata": "curl -s http://quasar.rogalik.tatrix.org:8080/metadata > metadata.json"
+    "load-metadata": "curl -s http://quasar.rogalik.tatrix.org:8080/metadata > metadata.json",
+    "check-strict": "for i in `find src -name '*.js'`; do grep -q \"use strict\" $i || echo $i; done"
   },
   "repository": {
     "type": "git",

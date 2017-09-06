@@ -1953,4 +1953,5 @@ T.dict = {
     "Leaf forest stick": "Лиственная палочка" ,
     "Pine forest stick": "Хвойная палочка",
     "Type": "Тип",
+    "Milestone": "Дорожный столб",
 };

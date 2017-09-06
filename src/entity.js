@@ -593,7 +593,7 @@ Entity.prototype = {
             y: p.y,
             w,
             h,
-            fill: (this.Group == "claim") && {
+            fill: (this.Group == "claim" || this.Group == "milepost") && {
                 w: 20 * CELL_SIZE,
                 h: 20 * CELL_SIZE,
                 color: "rgba(0, 0, 0, 0.1)",
@@ -792,6 +792,7 @@ Entity.prototype = {
         case "book":
         case "grave":
         case "sign":
+        case "milepost":
             this.Actions.push("edit");
             this.Actions.push("read");
             break;
@@ -1047,6 +1048,11 @@ Entity.prototype = {
             game.ctx.fillStyle = "rgba(20, 200, 20, 0.3)";
             game.iso.fillCircle(this.X, this.Y, this.WorkRadius);
             break;
+        case "milepost":
+            game.ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+            const r = this.ProtectionRadius * CELL_SIZE;
+            game.iso.fillRect(this.X - r, this.Y - r, 2*r, 2*r);
+            break;
         }
     },
     drawHovered: function() {
@@ -1064,6 +1070,7 @@ Entity.prototype = {
         switch (this.Group) {
         case "sign":
         case "grave":
+        case "milepost":
             if (!this.Props.Text)
                 break;
             var text = (this.Creator) ? this.Props.Text : T(this.Props.Text);
