@@ -96,7 +96,7 @@ class Avatar {
         }
 
         if (!this.character.isPlayer) {
-            return game.chat.nameMenu(e, this.character.Name);
+            return game.chat.nameMenu(e, this.character.Name, this.character);
         }
 
         switch (e.button) {

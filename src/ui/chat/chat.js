@@ -17,6 +17,10 @@ function Chat() {
         en: 99,
         ru: 98,
         ja: 97,
+        "pt-br": 96,
+        ko: 95,
+        "zh-cht": 94,
+        "zh-chs": 93,
     };
 
     this.newMessageElement = dom.tag("input", "#new-message");
@@ -126,7 +130,7 @@ function Chat() {
         return actions;
     };
 
-    this.nameMenu = function(e, name) {
+    this.nameMenu = function(e, name, character = null) {
         e.stopPropagation();
 
         var privateIndex = name.indexOf(privateSymbol);
@@ -161,7 +165,7 @@ function Chat() {
             }
             break;
         case game.controller.RMB:
-            game.menu.show(self.makeNameActions(name));
+            game.menu.show(character ||self.makeNameActions(name));
             break;
         }
         return true;
