@@ -165,7 +165,7 @@ function Chat() {
             }
             break;
         case game.controller.RMB:
-            game.menu.show(character ||self.makeNameActions(name));
+            game.menu.show(character || self.makeNameActions(name));
             break;
         }
         return true;

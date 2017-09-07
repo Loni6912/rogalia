@@ -1440,7 +1440,7 @@ class Character {
         }
 
         if (action) {
-            button.setAction(action, () => setCursor(action, entity));
+            button.setAction(action, () => setCursor(cmd, entity));
         } else {
             button.reset();
         }
