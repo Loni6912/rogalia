@@ -30,7 +30,7 @@ function main() {
                 }
             }
         }
-        return langs[0];
+        return langs[0].source;
     }
 
     function parseArgs() {
