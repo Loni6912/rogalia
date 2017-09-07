@@ -101,7 +101,7 @@ Entity.prototype = {
         }
 
         if ("Damage" in this)
-            name += "\n" + T("Damage") + ": " + this.damage();
+            name += "\n" + T("Damage") + ": " + util.toFixed(this.damage(), 0);
         else if (this.Props.Energy)
             name += "\n" + T("Energy") + ": " + this.Props.Energy;
 
@@ -211,7 +211,11 @@ Entity.prototype = {
             if ("Armor" in this) {
                 elements.push(dom.wrap("param", [T("Armor"), dom.wrap("value", this.armor())]));
             } else if ("Damage" in this) {
-                elements.push(dom.wrap("param", [T("Damage"), dom.wrap("value", this.damage())]));
+                const dmg = util.toFixed(this.rawDamage(), 0);
+                const damage = this.nonEffective()
+                      ? util.toFixed(game.player.Skills.Swordsmanship.Value.Current) + " / " + dmg
+                      : dmg;
+                elements.push(dom.wrap("param", [T("Damage"), dom.wrap("value", damage)]));
                 if (this.Ammo) {
                     elements.push(dom.wrap("param", [T("Ammo"), dom.wrap("value", T(this.Ammo.Type))]));
                 }
@@ -276,11 +280,13 @@ Entity.prototype = {
 
         return armor;
     },
+    rawDamage: function() {
+        return this.Damage * (Math.pow(this.Quality, 1.5) / 3333 + 1);
+    },
     damage: function() {
-        const damage = util.toFixed(this.Damage * (Math.pow(this.Quality, 1.5) / 3333 + 1), 0);
         return (this.nonEffective())
-            ? util.toFixed(game.player.Skills.Swordsmanship.Value.Current) + " / " + damage
-            : damage;
+            ? 0
+            : this.rawDamage();
     },
     makeDescription: function() {
         var text = T.items[this.Type] || T.items[this.Group] || T("No description yet");

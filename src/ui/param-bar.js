@@ -83,7 +83,7 @@ class ParamBar {
 
     static makeValue(label, paramOrvalue, digits = 0, icon) {
         const value = (paramOrvalue instanceof Object) ? paramOrvalue.Current : paramOrvalue;
-        return dom.wrap("param", [
+        return dom.wrap(dom.className("param", value < 0 && "negative"), [
             T(label),
             dom.wrap("value", util.toFixed(value, digits)),
             icon && dom.img(`assets/icons/${icon.toLowerCase()}.png`),

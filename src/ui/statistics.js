@@ -41,6 +41,7 @@ function Statistics() {
                         "Death": stats.Death,
                         "Elo rating": Math.floor(stats.Elo.Rating),
                         "Elo battles": stats.Elo.Battles,
+                        "Fame": game.player.Fame,
                     })
                 ],
             },

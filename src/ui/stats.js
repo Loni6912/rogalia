@@ -101,15 +101,75 @@ class Stats {
             param("Exp"),
             value("LP"),
             value("statusPoints", "Status points"),
-            value("Fame"),
             value("Addiction"),
             dom.hr(),
-            value("Speed"),
+            this.makeDamage(player),
             value("Armor"),
             value("Defence"),
             value("Accuracy"),
+            value("Speed"),
         ]);
     }
+
+    makeDamage(player) {
+        return ParamBar.makeValue("Damage", this.calcDamage(player));
+    }
+
+    calcDamage(player) {
+        const left = Entity.get(player.equipSlot("left-hand"));
+        const right = Entity.get(player.equipSlot("right-hand"));
+
+        const str = player.Attr.Strength.Current;
+        const dex = player.Attr.Dexterity.Current;;
+        if (!left && !right) {
+            return str * (dex/42+1)/12 + 12;
+        }
+
+        const ranged = detectRanged(left, right);
+        if (ranged) {
+            return ranged.damage();
+        }
+
+        const [main, secondary] = detectMelee(left, right).map(weapon => weapon.damage());
+        const lvl = player.Lvl;
+        const joy = player.Effects.MushroomJoy;
+        const mushroom = (joy) ? joy.BonusDamage : 1;
+        const alcohol = (player.Effects.Drunk) ? 1.07 : 1;
+
+        return (main + secondary*0.2)*(2 - (str-100))*(1+(0.2 * lvl/100))*mushroom/alcohol;
+
+        function detectMelee(left, right) {
+            const empty = {damage: () => 0};
+            if (left && left.Range) {
+                left = null;
+            }
+            if (right && right.Range) {
+                right = null;
+            }
+            if (left && !right) {
+                return [left, empty];
+            }
+            if (!left && right) {
+                return [right, empty];
+            }
+            if (left.Damage > right.Damage){
+                return [left, right];
+            }
+            return [right, left];
+        }
+
+        function detectRanged(left, right) {
+            if (!right && left && left.Range) {
+                return left;
+            }
+            if (!left && right && right.Range) {
+                return right;
+            }
+            return null;
+        }
+    }
+
+
 
     makeVitaminsAndAttrs(player) {
         return dom.wrap("vitamins-and-attrs", [
