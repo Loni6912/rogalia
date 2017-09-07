@@ -84,8 +84,7 @@ gulp.task("nwbuild", function() {
         // flavor: "sdk",
         cacheDir: "./build/cache/",
         platforms: ["win32", "linux64", "linux32", "osx64"],
-        //platforms: ["linux64"],
-        version: "0.22.3",
+        version: "0.23.7",
     });
 
     nw.build().then(function () {
