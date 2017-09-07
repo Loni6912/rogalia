@@ -55,7 +55,7 @@ function lobbyStage(data) {
 
 
     function del(name) {
-        game.popup.confirm(T("Delete character (will take 1 day)?"), () => {
+        game.popup.confirm(T("Delete character (will take 3 days)?"), () => {
             game.network.send("delete-character", {name}, (data) => game.setStage("lobby", data));
         });
     }
