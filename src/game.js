@@ -7,7 +7,7 @@ class Game {
     constructor(lang, args) {
         game = this;
         this.lang = lang;
-        this.args = this._initArgs(args);
+        this.args = args;
 
         if (document.location.host == "localhost") {
             this._initDevTools();
@@ -248,19 +248,6 @@ class Game {
             console.log(`Patched ${url}`);
         });
     }
-
-    _initArgs(args) {
-        if (!args["steam"]) {
-            return args;
-        }
-        const cmdArgs = require("nw.gui").App.argv.reduce(function(args, arg) {
-            const [key, value] = arg.split("=");
-            args[key.replace(/^--?/, "")] = value || true;
-            return args;
-        }, {});
-
-        return _.merge(args, cmdArgs);
-    };
 
     initAnalitics(userId) {
         ga.GameAnalytics.configureBuild("rogalia 0.31.0");

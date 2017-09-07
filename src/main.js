@@ -34,6 +34,13 @@ function main() {
     }
 
     function parseArgs() {
+        const args = parseUrlArgs();
+        return (args["steam"])
+            ? _.merge(args, parseCommandLineArgs())
+            : args;
+    }
+
+    function parseUrlArgs() {
         return document.location.search
             .substring(1)
             .split("&")
@@ -43,4 +50,13 @@ function main() {
                 return params;
             }, {});
     }
+
+    function parseCommandLineArgs() {
+        return require("nw.gui").App.argv.reduce((args, arg) => {
+            const [key, value] = arg.split("=");
+            args[key.replace(/^--?/, "")] = value || true;
+            return args;
+        }, {});
+    };
+
 }
