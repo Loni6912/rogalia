@@ -29,13 +29,14 @@ class WebglRenderer {
             this.handleContextError(new Error("Cannot get webgl context"));
             return;
         }
-        const vs = await this.loadShader("map.vs");
-        const fs = await this.loadShader(game.args["no-transitions"] ? "map-no-transitions.fs" : "map.fs");
+        const vs = this.loadShader("map.vs");
+        const fs = this.loadShader(game.args["no-transitions"] ? "map-no-transitions.fs" : "map.fs");
+        const texture = this.loadImageAndCreateTexture("assets/map/map.png");
 
         let program = null;
         try {
-            const vertexShader = this.createShader(gl, gl.VERTEX_SHADER, vs);
-            const fragmentShader = this.createShader(gl, gl.FRAGMENT_SHADER, fs);
+            const vertexShader = this.createShader(gl, gl.VERTEX_SHADER, await vs);
+            const fragmentShader = this.createShader(gl, gl.FRAGMENT_SHADER, await fs);
 
             program = this.createProgram(gl, vertexShader, fragmentShader);
         } catch(error) {
@@ -59,7 +60,7 @@ class WebglRenderer {
             gl.STATIC_DRAW
         );
 
-        this.texture = await this.loadImageAndCreateTexture("assets/map/map.png");
+        this.texture = await texture;
 
         this.minimapTexture = gl.createTexture();
         this.updateMinimap(data, width, height);
