@@ -1,4 +1,4 @@
-/* global fetch, m4, game, CELL_SIZE, Point, Image, Settings */
+/* global fetch, m4, game, CELL_SIZE, Point, Image, Settings, T */
 
 "use strict";
 
@@ -10,27 +10,36 @@ class WebglRenderer {
         this.canvas = canvas;
         this.gl = canvas.getContext("webgl");
         this._loaded = false;
-
         this.width = 64;
         this.height = 64;
         this.minimap = new Uint8Array(this.width * this.height * 4);
     }
 
+    handleContextError(error) {
+        game.popup.alert(T("GPU error occured. Falling back to a soft renderer."), () => {
+            Settings.toggle("settings.graphics.gpuRender");
+            game.reload();
+        });
+        game.sendError(`Webgl: ${error.message}`);
+    }
+
     async load(data, width, height) {
         const {gl} = this;
-
+        if (!gl) {
+            this.handleContextError(new Error("Cannot get webgl context"));
+            return;
+        }
         const vs = await this.loadShader("map.vs");
         const fs = await this.loadShader(game.args["no-transitions"] ? "map-no-transitions.fs" : "map.fs");
 
-        const vertexShader = this.createShader(gl, gl.VERTEX_SHADER, vs);
-        const fragmentShader = this.createShader(gl, gl.FRAGMENT_SHADER, fs);
+        let program = null;
+        try {
+            const vertexShader = this.createShader(gl, gl.VERTEX_SHADER, vs);
+            const fragmentShader = this.createShader(gl, gl.FRAGMENT_SHADER, fs);
 
-        const program = this.createProgram(gl, vertexShader, fragmentShader);
-        if (!program) {
-            game.popup.alert(T("GPU error occured. Falling back to a soft renderer."), () => {
-                Settings.toggle("settings.graphics.gpuRender");
-                game.reload();
-            });
+            program = this.createProgram(gl, vertexShader, fragmentShader);
+        } catch(error) {
+            this.handleContextError(error);
             return;
         }
         this.program = program;
@@ -135,14 +144,13 @@ class WebglRenderer {
             return shader;
         }
 
-        console.error(gl.getShaderInfoLog(shader));
+        const info = gl.getShaderInfoLog(shader);
         gl.deleteShader(shader);
-        return null;
+        throw new Error(info);
     }
 
     createProgram(gl, vertexShader, fragmentShader) {
         const program = gl.createProgram();
-        try {
             gl.attachShader(program, vertexShader);
             gl.attachShader(program, fragmentShader);
             gl.linkProgram(program);
@@ -151,14 +159,12 @@ class WebglRenderer {
                 return program;
             }
 
-            console.error(gl.getProgramInfoLog(program));
-            gl.deleteProgram(program);
-        } catch(error) {
-            // old video cards will fail like
-            // gl.getExtension('WEBGL_lose_context').loseContext();
-            console.error("Webgl:", error);
-        }
-        return null;
+        // old video cards may fail like
+        // gl.getExtension('WEBGL_lose_context').loseContext();
+
+        const info = gl.getProgramInfoLog(program);
+        gl.deleteProgram(program);
+        throw new Error(info);
     }
 
     updateMap() {}
