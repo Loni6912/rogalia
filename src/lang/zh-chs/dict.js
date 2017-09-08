@@ -1293,7 +1293,6 @@ T.dict = {
     "Coal bag": "煤袋",
     "Mechanic plow": "机械犁",
 
-    "Maximum available period was already paid" : "已支付最长使用期",
     "You have no claim" : "你没有领地",
     "You cannot build now" : "你目前不能建造",
     "You cannot use that license" : "你不能使用许可证",

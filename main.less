@@ -214,6 +214,7 @@ select {
         border-right: 1px solid #575b65;
         width: 14px;
         line-height: 22px;
+        pointer-events: none;
     }
 }
 
@@ -3143,7 +3144,7 @@ input[type=number], .lot-quantity > input, .price > input {
 }
 
 #bank{
-    .price-controller, .claim-controller {
+    .price-controller {
         width: 156px;
         display: flex;
         flex-wrap: wrap;
@@ -3155,14 +3156,35 @@ input[type=number], .lot-quantity > input, .price > input {
         margin-right: 0;
     }
 
-    label {
-        text-align: left;
-        display: block;
+    .claim {
+        .claim-prolongation.disabled {
+            filter: grayscale(100%);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+
+        .select {
+            width: 45px;
+        }
+
+        .rent-price::before {
+            content: "×";
+            position: relative;
+            bottom: -13px;
+        }
+
+        .total-price {
+            border-top: 1px solid #999;
+            padding-top: 2px;
+            padding-left: 10px;
+        }
     }
 
-    label > span {
-        float: right;
-        margin-left: 5px;
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .lot-price {

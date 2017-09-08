@@ -1314,7 +1314,6 @@ T.dict = {
     "Coal bag": "Сумка под уголь",
     "Mechanic plow": "Механический плуг",
 
-    "Maximum available period was already paid" : "Оплачено на максимальный период",
     "You have no claim" : "У вас нет клейма",
     "You cannot build now" : "Вы не можете строить сейчас",
     "You cannot use that license" : "Вы не можете использовать эту лицензию",

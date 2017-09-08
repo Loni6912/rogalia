@@ -89,13 +89,20 @@ var dom = {
     select: function(options, selected, classOrId, onchange) {
         const select = this.make("select", options.map(value => {
             const option = dom.make("option", value);
-            option.selected = (value == selected);;;;
+            option.selected = (value == selected);
             return option;
         }));
         if (onchange) {
             select.onchange = onchange;
         }
-        return dom.wrap("select", select, classOrId);
+        const wrapper = dom.wrap("select", select, classOrId);
+        Object.defineProperty(wrapper, "value", {
+            get: () => select.value,
+        });
+        Object.defineProperty(wrapper, "onchange", {
+            set: f => select.onchange = f,
+        });
+        return wrapper;
     },
     option: function(text) {
         return this.tag("option", null, {text: text});

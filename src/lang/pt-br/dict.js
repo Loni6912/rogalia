@@ -1007,7 +1007,6 @@ T.dict = {
     "Material": "Material",
     "Mattress": "Colchão",
     "Max": "Max",
-    "Maximum available period was already paid": "Período máximo disponível já foi pago!",
     "Mead": "Hidromel",
     "Meat": "Carne",
     "Meat grinder": "Moedor de carne",

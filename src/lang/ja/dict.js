@@ -1281,7 +1281,6 @@ T.dict = {
     "Healing cream": "ヒーリング・クリーム",
     "Coal bag": "木炭袋",
     "Mechanic plow": "金属製の耕運機",
-    "Maximum available period was already paid": "既に最大期間を支払い済みです",
     "You have no claim": "権利を持っていません",
     "You cannot build now": "建設できません",
     "You cannot use that license": "そのライセンスを使用することはできません",
