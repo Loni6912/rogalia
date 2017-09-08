@@ -542,7 +542,7 @@ class Game {
     error(msg) {
         this.sendError(msg);
         this.exit();
-        throw "Fatal error";
+        throw new Error(msg);
     }
 
     mainLoop(currentTime) {

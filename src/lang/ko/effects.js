@@ -144,4 +144,9 @@ Effects.descriptions = {
         "effect": "크리티컬 확률이 증가합니다. [De] 의 데미지 흡수량이 증가합니다.",
         "desc": "AoE buff"
     },
+    "Invisibility": {
+        "class": "good",
+        "effect": "Makes you invisible",
+        "desc": "Reveals on any action",
+    },
 };

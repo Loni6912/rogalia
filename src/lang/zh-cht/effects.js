@@ -145,4 +145,9 @@ Effects.descriptions = {
         "effect": "增加暴擊幾率；增加傷害吸收。",
         "desc": "AoE buff"
     },
+    "Invisibility": {
+        "class": "good",
+        "effect": "Makes you invisible",
+        "desc": "Reveals on any action",
+    },
 };

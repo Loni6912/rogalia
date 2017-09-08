@@ -143,4 +143,9 @@ Effects.descriptions = {
         "effect": "Increases crit chance; with [де] increases damage absorption.",
         "desc": "AoE buff"
     },
+    "Invisibility": {
+        "class": "good",
+        "effect": "Makes you invisible",
+        "desc": "Reveals on any action",
+    },
 };
