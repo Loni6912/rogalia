@@ -882,6 +882,7 @@ function Controller(game) {
     };
 
     this.creatingCursor = function(entity, command = "entity-add", callback, cancel) {
+        this.clearCursors();
         this.world.cursor = entity;
 
         if (this.lastAction.type != entity.Type) {
