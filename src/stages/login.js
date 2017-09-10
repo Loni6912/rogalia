@@ -313,7 +313,7 @@ function loginStage() {
             break;
         default:
             console.error(this.response);
-            game.popup.alert(T("Cannot connect to server"));
+            game.exit(T("Cannot connect to server"));
             break;
         }
     }
