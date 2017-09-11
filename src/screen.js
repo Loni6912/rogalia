@@ -8,6 +8,7 @@ class Screen {
         this.height = 0;
         this.cells_x = 0;
         this.cells_y = 0;
+        window.addEventListener("resize", () => this.update());
     }
 
     update(fullscreen = (game.stage.name == "main") ? game.fullscreen : false) {

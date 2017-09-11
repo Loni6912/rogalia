@@ -329,7 +329,6 @@ class Game {
     };
 
     addEventListeners() {
-        window.addEventListener("resize", () => this.screen.update());
         window.addEventListener("beforeunload", () => this.save());
         window.addEventListener("focus", () => { this.focus = true; });
         window.addEventListener("blur", () => { this.focus = false; });
