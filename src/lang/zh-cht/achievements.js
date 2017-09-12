@@ -4,15 +4,15 @@
 
 Achievements.descriptions = {
     "get-trained-by-plato" : {
-        name: "好的，我該怎麼贏？",
-        desc: "被柏拉圖訓練",
+        name: "新手入門",
+        desc: "接受柏拉圖的訓練",
     },
     "extend-claim": {
-        name: "我要留在這裡",
-        desc: "擴張領地",
+        name: "安居",
+        desc: "延長領地租期",
     },
     "plant-1000-seeds": {
-        name: "我認為這是一個快樂的農場",
+        name: "開心農場",
         desc: "種1000顆種子",
     },
     "fry-100-mushrooms": {
@@ -20,32 +20,32 @@ Achievements.descriptions = {
         desc: "炒100個蘑菇",
     },
     "plough-3000-tiles": {
-        name: "莊稼收割機",
+        name: "農家樂",
         desc: "犁3000塊地",
     },
     "get-lvl-18": {
         name: "告別菜鳥",
-        desc: "達到 level 18",
+        desc: "達到等級18",
     },
     "get-lvl-50": {
         name: "熟手",
-        desc: "達到 level 50",
+        desc: "達到等級50",
     },
     "get-lvl-100": {
         name: "老手",
-        desc: "達到 level 100",
+        desc: "達到等級100",
     },
     "any-skill-100": {
-        name: "雜工",
+        name: "專業人士",
         desc: "任何技能等級達到100",
     },
     "three-skills-100" : {
-        name: "所有行業的傑克",
+        name: "多才多藝",
         desc: "任意3技能等級達到100",
     },
     "all-stats-100" : {
         name: "超人",
-        desc: "所有技能等級達到100",
+        desc: "所有屬性達到100",
     },
     "strength-100" : {
         name: "力量",
@@ -72,16 +72,16 @@ Achievements.descriptions = {
         desc: "智慧 100",
     },
     "dig-300-tiles-underground" : {
-        name: "挖掘機",
-        desc: "挖掘300塊地形",
+        name: "怪手",
+        desc: "在地底挖掘300塊地",
     },
     "dig-1000-ore" : {
-        name: "深井水",
-        desc: "挖出1000單位的任何礦石",
+        name: "礦熱",
+        desc: "挖出1000顆任意礦石",
     },
     "all-combo-100" : {
         name: "戰鬥組合大師",
-        desc: "執行每個組合100次",
+        desc: "執行戰鬥組合100次",
     },
     "win-100-arena" : {
         name: "角鬥士",
@@ -92,15 +92,15 @@ Achievements.descriptions = {
         desc: "在競技場贏了500次",
     },
     "chudo-yudo" : {
-        name: "魔鬼魚",
-        desc: "抓住一條魔鬼魚",
+        name: "奇鯨",
+        desc: "釣到一條巨鯨",
     },
     "cut-down-300-trees" : {
-        name: "光頭強",
+        name: "山老鼠",
         desc: "砍300棵樹",
     },
     "kill-abu" : {
-        name: "新時代的到來",
+        name: "五指山",
         desc: "殺死阿布",
     },
     "kill-omich" : {
@@ -108,11 +108,11 @@ Achievements.descriptions = {
         desc: "殺死歐米",
     },
     "kill-preved" : {
-        name: "光頭強的勝利！",
-        desc: "殺死一隻熊",
+        name: "熊出沒注意",
+        desc: "殺死一頭熊",
     },
     "kill-wyvern" : {
-        name: "登上天空!",
+        name: "飛龍在天",
         desc: "殺死雙足飛龍",
     },
     "kill-all-bosses" : {
@@ -128,12 +128,12 @@ Achievements.descriptions = {
         desc: "殺死一個玩家",
     },
     "eat-shit" : {
-        name: "食屎啦",
-        desc: "吃一坨翔",
+        name: "吃屎啦",
+        desc: "吃一坨屎",
     },
     "buy-sex" : {
-        name: "老司機",
-        desc: "在瑪格那做一次大保健",
+        name: "有價的愛",
+        desc: "與瑪格進行性交易",
     },
     "craft-bloody-armor" : {
         name: "血主",
@@ -141,6 +141,6 @@ Achievements.descriptions = {
     },
     "all-vitamins-100": {
         name: "興奮劑",
-        desc: "將所有維生素提高到100",
+        desc: "將所有營養素提高到100",
     }
 };
